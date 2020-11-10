@@ -5,7 +5,7 @@ import h2o
 from tests import pyunit_utils
 from h2o.estimators.glm import H2OGeneralizedLinearEstimator
 
-# Verify checkpointing for binomial with all solvers
+# Verify checkpointing for binomial with IRLSM
 def tesGLMtCheckpointing():
    # train = h2o.import_file(path=pyunit_utils.locate("smalldata/glm_test/binomial_20_cols_10KRows.csv"))
     train = h2o.import_file(path=pyunit_utils.locate("/Users/wendycwong/temp/Binomial17Rows.csv"))
@@ -15,7 +15,7 @@ def tesGLMtCheckpointing():
     Y = "C21"
     X = list(range(0,20))
 
-    solvers = ["l_bfgs", "irlsm", "coordinate_descent_naive", "coordinate_descent"]
+    solvers = ["irlsm"]
     for solver in solvers:
         print("Checking checkpoint for binomials with solver {0}".format(solver))
         buildModelCheckpointing(train, X, Y, "binomial", solver)
