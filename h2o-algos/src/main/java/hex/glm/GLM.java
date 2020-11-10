@@ -1646,7 +1646,7 @@ public class GLM extends ModelBuilder<GLMModel,GLMParameters,GLMOutput> {
               Log.info(LogMsg("LBFGS, gradient norm = " + ArrayUtils.linfnorm(ginfo._gradient, false)));
             return GLMDriver.this.progress(beta,ginfo);
           }
-        });
+        }, _state._iter);
         Log.info(LogMsg(r.toString()));
         _state.updateState(r.coefs,(GLMGradientInfo)r.ginfo);
       }
